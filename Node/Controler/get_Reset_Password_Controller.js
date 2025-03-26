@@ -1,3 +1,6 @@
+
+// getResetPasswordPage.js (React)
+/* 
 const bcrypt = require("bcrypt");
 const { mySqlConnectionPool } = require("../Config/Db");
 
@@ -91,3 +94,6 @@ const resetPassword_Controller = async (req, res) => {
 };
 
 module.exports = { resetPassword_Controller, getResetPasswordPage };
+
+
+ */
