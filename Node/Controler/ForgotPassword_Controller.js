@@ -1,8 +1,6 @@
-
 // forgotPassword_Controller.js (Node)
 
- 
-require('dotenv').config();
+require("dotenv").config();
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { mySqlConnectionPool } = require("../Config/Db");
@@ -34,7 +32,7 @@ const forgotPassword_Controller = async (req, res) => {
 
         // Generate a reset token
         const resetToken = crypto.randomBytes(20).toString("hex");
-        const resetTokenExpiry = (Date.now() + 15 * 60 * 1000); // token valid for 15 minuts
+        const resetTokenExpiry = Date.now() + 15 * 60 * 1000; // token valid for 15 minuts
 
         // Save the reset token and expiry in the database
         await mySqlConnectionPool.query(
@@ -51,12 +49,12 @@ const forgotPassword_Controller = async (req, res) => {
             },
         });
 
-        const resetLink = `http://192.168.219.224:4545/reset-password/${encodeURIComponent(resetToken)}`;
+        const resetLink = `https://turf-finder-project.netlify.app/reset-password/${encodeURIComponent(
+            resetToken
+        )}`;
 
         console.log(resetLink);
-        
 
-    
         const mailOptions = {
             from: "tanmayshimpi1818@gmail.com",
             to: email,
@@ -92,4 +90,3 @@ const forgotPassword_Controller = async (req, res) => {
 };
 
 module.exports = { forgotPassword_Controller };
- 
