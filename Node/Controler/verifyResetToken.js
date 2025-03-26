@@ -1,6 +1,8 @@
 
 // verifyResetToken.js
+
 const { mySqlConnectionPool } = require("../Config/Db");
+
 
 const verifyResetToken = async (req, res) => {
     try {
