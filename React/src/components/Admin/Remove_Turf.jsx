@@ -1,9 +1,8 @@
-
 // Remove_Turf.jsx (React)
-import axios from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Remove_Turf() {
     const [area, setArea] = useState("");
@@ -15,9 +14,12 @@ function Remove_Turf() {
         e.preventDefault(); // Prevent default form submission behavior
 
         try {
-            const response = await axios.delete("http://localhost:4545/delete-turf", {
-                data: { area } // Send area in the request body
-            });
+            const response = await axios.delete(
+                "https://host-turf-managment-system-project.onrender.com/delete-turf",
+                {
+                    data: { area }, // Send area in the request body
+                }
+            );
 
             if (response.data.success) {
                 toast.success("Turf Deleted Successfully");
@@ -64,6 +66,3 @@ function Remove_Turf() {
 }
 
 export default Remove_Turf;
-
-
-

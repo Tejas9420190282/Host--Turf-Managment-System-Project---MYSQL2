@@ -1,4 +1,3 @@
-
 // View_Player_Data.js(React)
 
 import axios from "axios";
@@ -20,9 +19,12 @@ function View_Player_Data() {
         setError("");
 
         try {
-            const response = await axios.get("http://localhost:4545/view-booking-using-slote-number", {
-                params: { sloteId, turfId },
-            });
+            const response = await axios.get(
+                "https://host-turf-managment-system-project.onrender.com/view-booking-using-slote-number",
+                {
+                    params: { sloteId, turfId },
+                }
+            );
 
             if (response.data.success) {
                 setPlayerData(response.data.data);
@@ -38,7 +40,9 @@ function View_Player_Data() {
 
     return (
         <div className="max-w-3xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md mt-10">
-            <h2 className="text-2xl font-bold text-center mb-4 text-gray-700">View Player Booking</h2>
+            <h2 className="text-2xl font-bold text-center mb-4 text-gray-700">
+                View Player Booking
+            </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     type="number"
@@ -66,7 +70,9 @@ function View_Player_Data() {
 
             {playerData && (
                 <div className="mt-6 p-4 bg-white rounded-md shadow-md overflow-x-auto">
-                    <h3 className="text-lg font-semibold mb-3 text-gray-700">Player Booking Details</h3>
+                    <h3 className="text-lg font-semibold mb-3 text-gray-700">
+                        Player Booking Details
+                    </h3>
                     <table className="min-w-full border border-gray-200">
                         <thead>
                             <tr className="bg-blue-500 text-white">
@@ -77,8 +83,12 @@ function View_Player_Data() {
                         <tbody>
                             {Object.entries(playerData).map(([key, value]) => (
                                 <tr key={key} className="hover:bg-gray-100">
-                                    <td className="py-2 px-4 border font-semibold capitalize">{key.replace('_', ' ')}</td>
-                                    <td className="py-2 px-4 border">{value}</td>
+                                    <td className="py-2 px-4 border font-semibold capitalize">
+                                        {key.replace("_", " ")}
+                                    </td>
+                                    <td className="py-2 px-4 border">
+                                        {value}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

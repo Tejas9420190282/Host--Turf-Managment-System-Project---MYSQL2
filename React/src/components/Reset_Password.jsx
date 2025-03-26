@@ -19,7 +19,7 @@ const ResetPassword = () => {
 
         try {
             const response = await axios.post(
-                `http://localhost:4545/reset-password/${token}`,
+                `https://host-turf-managment-system-project.onrender.com/reset-password/${token}`,
                 { password }
             );
 
@@ -63,9 +63,13 @@ const ResetPassword = () => {
                         />
                     </div>
                     {message && (
-                        <p className="text-green-600 text-center mb-4">{message}</p>
+                        <p className="text-green-600 text-center mb-4">
+                            {message}
+                        </p>
                     )}
-                    {error && <p className="text-red-600 text-center mb-4">{error}</p>}
+                    {error && (
+                        <p className="text-red-600 text-center mb-4">{error}</p>
+                    )}
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"

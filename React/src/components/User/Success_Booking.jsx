@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 
 function Success_Booking() {
-
-    
     useEffect(() => {
         // Fetch and download the PDF after the component mounts
         const downloadPDF = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:4545/generate-pdf`,
+                    `https://host-turf-managment-system-project.onrender.com/generate-pdf`,
                     { responseType: "blob" } // Important for handling binary data (PDF)
                 );
 
                 // Create a Blob from the PDF data
-                const pdfBlob = new Blob([response.data], { type: "application/pdf" });
+                const pdfBlob = new Blob([response.data], {
+                    type: "application/pdf",
+                });
 
                 // Create a link element to trigger the download
                 const link = document.createElement("a");

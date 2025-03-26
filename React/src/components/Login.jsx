@@ -1,4 +1,3 @@
-
 // login.jsx (React)
 
 import axios from "axios";
@@ -25,24 +24,25 @@ function Login() {
 
         setLoading(true);
 
-         // Clear any existing authentication token before login
-        localStorage.removeItem("authToken"); 
+        // Clear any existing authentication token before login
+        localStorage.removeItem("authToken");
 
         try {
             const response = await axios.post(
-                "http://localhost:4545/login-submit",
+                "https://host-turf-managment-system-project.onrender.com/login-submit",
                 { email, password },
                 { headers: { "Content-Type": "application/json" } }
             );
 
             if (response.data.redirect) {
                 sessionStorage.setItem("Username", response.data.user);
-                
+
                 localStorage.setItem("authToken", response.data.token);
 
                 toast.success("Login Successful!");
 
-                const redirectPath = location.state?.from || response.data.redirect;
+                const redirectPath =
+                    location.state?.from || response.data.redirect;
                 navigate(redirectPath);
             } else {
                 toast.error("Login failed, please try again.");
@@ -55,18 +55,35 @@ function Login() {
     };
 
     return (
-        <div 
+        <div
             className="flex justify-center items-center min-h-screen bg-cover bg-center relative"
-            style={{ backgroundImage: "url('https://wallpapercave.com/wp/wp3049868.jpg')" }}
+            style={{
+                backgroundImage:
+                    "url('https://wallpapercave.com/wp/wp3049868.jpg')",
+            }}
         >
-            <div className="relative   p-10 rounded-xl shadow-lg w-full max-w-md backdrop-blur-xl " style={{ backgroundColor: "rgba(0,0,0,0.5)" }}>
-                <h2 className="text-3xl font-bold text-center text-white mb-6">Welcome Back!</h2>
+            <div
+                className="relative   p-10 rounded-xl shadow-lg w-full max-w-md backdrop-blur-xl "
+                style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+            >
+                <h2 className="text-3xl font-bold text-center text-white mb-6">
+                    Welcome Back!
+                </h2>
 
-                {error && <p className="text-red-600 text-sm mb-4 bg-red-100 p-2 rounded">{error}</p>}
+                {error && (
+                    <p className="text-red-600 text-sm mb-4 bg-red-100 p-2 rounded">
+                        {error}
+                    </p>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-white">Email</label>
+                        <label
+                            htmlFor="email"
+                            className="block text-sm font-medium text-white"
+                        >
+                            Email
+                        </label>
                         <input
                             type="email"
                             value={email}
@@ -80,7 +97,12 @@ function Login() {
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-white">Password</label>
+                        <label
+                            htmlFor="password"
+                            className="block text-sm font-medium text-white"
+                        >
+                            Password
+                        </label>
                         <input
                             type="password"
                             value={password}
@@ -91,7 +113,7 @@ function Login() {
                             placeholder="Enter your password"
                             className="w-full px-4 py-3 mt-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 placeholder-white text-white"
                         />
-                        <p 
+                        <p
                             className="text-sm text-blue-500 cursor-pointer hover:underline mt-1"
                             onClick={() => navigate("/forgot-password")}
                         >
@@ -114,7 +136,7 @@ function Login() {
 
                 <p className="text-sm text-white mt-4 text-center">
                     Don't have an account?{" "}
-                    <span 
+                    <span
                         className="text-blue-600 cursor-pointer hover:underline"
                         onClick={() => navigate("/signup")}
                     >
@@ -127,5 +149,3 @@ function Login() {
 }
 
 export default Login;
-
-

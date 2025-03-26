@@ -1,4 +1,3 @@
-
 // Selected_Slote.js (React)
 
 import axios from "axios";
@@ -55,7 +54,7 @@ function Selected_Slote() {
         const fetchData = async () => {
             try {
                 const response1 = await axios.post(
-                    "http://localhost:4545/selected-available-slote",
+                    "https://host-turf-managment-system-project.onrender.com/selected-available-slote",
                     { sloteid, turfid }
                 );
 
@@ -93,10 +92,10 @@ function Selected_Slote() {
 
     const handlePayment = async (e) => {
         e.preventDefault();
-    
+
         try {
             const response2 = await axios.post(
-                "http://localhost:4545/payment",
+                "https://host-turf-managment-system-project.onrender.com/payment",
                 {
                     turfData,
                     name,
@@ -116,9 +115,9 @@ function Selected_Slote() {
                     date,
                 }
             );
-    
+
             const { order } = response2.data;
-    
+
             const options = {
                 key: "rzp_test_6Pg8m8ifI60Xmi", // Your Razorpay key ID
                 amount: order.amount,
@@ -129,20 +128,20 @@ function Selected_Slote() {
                 handler: async function (response) {
                     // Step 3: Verify payment on the backend
                     const verifyResponse = await axios.post(
-                        "http://localhost:4545/payment/verify",
+                        "https://host-turf-managment-system-project.onrender.com/payment/verify",
                         {
                             razorpay_order_id: response.razorpay_order_id,
                             razorpay_payment_id: response.razorpay_payment_id,
                             razorpay_signature: response.razorpay_signature,
                         }
                     );
-    
+
                     if (verifyResponse.data.success) {
                         toast.success("Payment successful!");
-    
+
                         // Generate and download PDF
                         const pdfResponse = await axios.post(
-                            "http://localhost:4545/generate-pdf",
+                            "https://host-turf-managment-system-project.onrender.com/generate-pdf",
                             {
                                 turf_id,
                                 slote_id,
@@ -161,30 +160,35 @@ function Selected_Slote() {
                             },
                             { responseType: "blob" } // Important: Set responseType to 'blob'
                         );
-    
+
                         if (pdfResponse.data) {
                             // Create a Blob from the PDF Stream
-                            const file = new Blob([pdfResponse.data], { type: "application/pdf" });
-    
+                            const file = new Blob([pdfResponse.data], {
+                                type: "application/pdf",
+                            });
+
                             // Create a link element
                             const fileURL = URL.createObjectURL(file);
                             const link = document.createElement("a");
                             link.href = fileURL;
-                            link.setAttribute("download", `booking-details-${slote_id}.pdf`);
+                            link.setAttribute(
+                                "download",
+                                `booking-details-${slote_id}.pdf`
+                            );
                             document.body.appendChild(link);
-    
+
                             // Trigger the download
                             link.click();
-    
+
                             // Clean up
                             URL.revokeObjectURL(fileURL);
                             link.remove();
-    
+
                             console.log("PDF downloaded successfully");
                         } else {
                             console.error("PDF generation failed");
                         }
-    
+
                         // Redirect or show success message
                         window.location.href = "/success-booking";
                     } else {
@@ -199,7 +203,7 @@ function Selected_Slote() {
                     color: "#3399cc",
                 },
             };
-    
+
             const rzp = new window.Razorpay(options); // Use window.Razorpay
             rzp.open();
         } catch (error) {

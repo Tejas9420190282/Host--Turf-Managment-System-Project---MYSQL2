@@ -1,5 +1,5 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 
 function View_Booking() {
     const [turfId, setTurfId] = useState("");
@@ -15,17 +15,22 @@ function View_Booking() {
         }
 
         try {
-            const response = await axios.get("http://localhost:4545/view-booking-using-turfid", {
-                params: {
-                    turfId,
-                },
-            });
+            const response = await axios.get(
+                "https://host-turf-managment-system-project.onrender.com/view-booking-using-turfid",
+                {
+                    params: {
+                        turfId,
+                    },
+                }
+            );
 
             if (response.data.success) {
                 setTurfData(response.data.data); // Set the array of bookings
                 setError("");
             } else {
-                setError(response.data.message || "Failed to fetch booking data");
+                setError(
+                    response.data.message || "Failed to fetch booking data"
+                );
             }
         } catch (error) {
             setError("An error occurred. Please try again.");
@@ -35,8 +40,10 @@ function View_Booking() {
 
     return (
         <div className="p-5">
-            <h1 className="text-2xl font-bold mb-4 text-center md:text-left">View Bookings by Turf ID</h1>
-            
+            <h1 className="text-2xl font-bold mb-4 text-center md:text-left">
+                View Bookings by Turf ID
+            </h1>
+
             {/* Responsive Form */}
             <div className="flex flex-col items-center md:items-start">
                 <form onSubmit={handleSubmit} className="w-full max-w-md mb-6">
@@ -60,7 +67,11 @@ function View_Booking() {
                     </div>
                 </form>
 
-                {error && <p className="text-red-600 mb-4 text-center md:text-left">{error}</p>}
+                {error && (
+                    <p className="text-red-600 mb-4 text-center md:text-left">
+                        {error}
+                    </p>
+                )}
             </div>
 
             {turfData.length > 0 && (
@@ -69,7 +80,9 @@ function View_Booking() {
                         <thead className="bg-blue-600 text-white">
                             <tr>
                                 <th className="px-4 py-2 border">Booking ID</th>
-                                <th className="px-4 py-2 border">Player Name</th>
+                                <th className="px-4 py-2 border">
+                                    Player Name
+                                </th>
                                 <th className="px-4 py-2 border">Contact</th>
                                 <th className="px-4 py-2 border">Turf Name</th>
                                 <th className="px-4 py-2 border">City</th>
@@ -78,8 +91,12 @@ function View_Booking() {
                                 <th className="px-4 py-2 border">Date</th>
                                 <th className="px-4 py-2 border">Start Time</th>
                                 <th className="px-4 py-2 border">End Time</th>
-                                <th className="px-4 py-2 border">Light Required</th>
-                                <th className="px-4 py-2 border">Equipment Required</th>
+                                <th className="px-4 py-2 border">
+                                    Light Required
+                                </th>
+                                <th className="px-4 py-2 border">
+                                    Equipment Required
+                                </th>
                                 <th className="px-4 py-2 border">Price</th>
                                 <th className="px-4 py-2 border">Slot ID</th>
                                 <th className="px-4 py-2 border">Turf ID</th>
@@ -87,22 +104,57 @@ function View_Booking() {
                         </thead>
                         <tbody>
                             {turfData.map((booking) => (
-                                <tr key={booking.id} className="hover:bg-gray-50 transition duration-200">
-                                    <td className="px-4 py-2 border">{booking.id}</td>
-                                    <td className="px-4 py-2 border">{booking.name}</td>
-                                    <td className="px-4 py-2 border">{booking.contact}</td>
-                                    <td className="px-4 py-2 border">{booking.turf_name}</td>
-                                    <td className="px-4 py-2 border">{booking.city}</td>
-                                    <td className="px-4 py-2 border">{booking.area}</td>
-                                    <td className="px-4 py-2 border">{booking.pincode}</td>
-                                    <td className="px-4 py-2 border">{new Date(booking.date).toLocaleDateString()}</td>
-                                    <td className="px-4 py-2 border">{booking.start_time}</td>
-                                    <td className="px-4 py-2 border">{booking.end_time}</td>
-                                    <td className="px-4 py-2 border">{booking.requird_light}</td>
-                                    <td className="px-4 py-2 border">{booking.requird_equipment}</td>
-                                    <td className="px-4 py-2 border">₹{booking.price}</td>
-                                    <td className="px-4 py-2 border">{booking.slote_id}</td>
-                                    <td className="px-4 py-2 border">{booking.turf_id}</td>
+                                <tr
+                                    key={booking.id}
+                                    className="hover:bg-gray-50 transition duration-200"
+                                >
+                                    <td className="px-4 py-2 border">
+                                        {booking.id}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.name}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.contact}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.turf_name}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.city}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.area}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.pincode}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {new Date(
+                                            booking.date
+                                        ).toLocaleDateString()}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.start_time}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.end_time}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.requird_light}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.requird_equipment}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        ₹{booking.price}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.slote_id}
+                                    </td>
+                                    <td className="px-4 py-2 border">
+                                        {booking.turf_id}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

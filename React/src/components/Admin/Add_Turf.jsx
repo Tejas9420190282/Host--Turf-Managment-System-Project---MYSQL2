@@ -1,4 +1,3 @@
-
 // Add_Turf.jsx (React)
 
 import axios from "axios";
@@ -29,7 +28,10 @@ function Add_Turf() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:4545/add-turf-submit", form);
+            const response = await axios.post(
+                "https://host-turf-managment-system-project.onrender.com/add-turf-submit",
+                form
+            );
             console.log("Turf created successfully:", response.data);
             toast.success("Turf created successfully!");
 
@@ -43,12 +45,16 @@ function Add_Turf() {
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="max-w-lg w-full p-8 bg-white rounded-lg shadow-lg">
-                <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Create Turf</h2>
+                <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+                    Create Turf
+                </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Turf Name */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Turf Name:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Turf Name:
+                        </label>
                         <input
                             type="text"
                             name="turf_name"
@@ -61,7 +67,9 @@ function Add_Turf() {
 
                     {/* Area */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Area:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Area:
+                        </label>
                         <input
                             type="text"
                             name="area"
@@ -74,7 +82,9 @@ function Add_Turf() {
 
                     {/* City */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">City:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            City:
+                        </label>
                         <input
                             type="text"
                             name="city"
@@ -87,7 +97,9 @@ function Add_Turf() {
 
                     {/* Pincode */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Pincode:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Pincode:
+                        </label>
                         <input
                             type="text"
                             name="pincode"
@@ -100,7 +112,9 @@ function Add_Turf() {
 
                     {/* Light */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Light:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Light:
+                        </label>
                         <select
                             name="light"
                             value={form.light}
@@ -116,7 +130,9 @@ function Add_Turf() {
 
                     {/* Price per Hour */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Price/hr:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Price/hr:
+                        </label>
                         <input
                             type="text"
                             name="price_hr"
@@ -129,7 +145,9 @@ function Add_Turf() {
 
                     {/* Equipment */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Equipment:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Equipment:
+                        </label>
                         <select
                             name="equipment"
                             value={form.equipment}
@@ -145,7 +163,9 @@ function Add_Turf() {
 
                     {/* Opening Time */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Opening Time:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Opening Time:
+                        </label>
                         <input
                             type="time"
                             name="openingTime"
@@ -158,7 +178,9 @@ function Add_Turf() {
 
                     {/* Closing Time */}
                     <div>
-                        <label className="block text-gray-700 font-semibold">Closing Time:</label>
+                        <label className="block text-gray-700 font-semibold">
+                            Closing Time:
+                        </label>
                         <input
                             type="time"
                             name="closingTime"

@@ -1,4 +1,3 @@
-
 // Search_Available_Turf.jsx (React)
 
 import axios from "axios";
@@ -12,7 +11,7 @@ function Search_Available_Turf() {
     const [area, setArea] = useState("");
     const [booking_date, setBookingDate] = useState("");
 
-    sessionStorage.setItem("Booking_Date", booking_date)
+    sessionStorage.setItem("Booking_Date", booking_date);
 
     // State to store fetched turf data
     const [turfData, setTurfData] = useState([]);
@@ -27,9 +26,8 @@ function Search_Available_Turf() {
         );
 
         try {
-            
             const response = await axios.get(
-                "http://localhost:4545/search-available-turf-submit",
+                "https://host-turf-managment-system-project.onrender.com/search-available-turf-submit",
                 {
                     params: { city, area, booking_date },
                 }
@@ -37,9 +35,11 @@ function Search_Available_Turf() {
             console.log("Response Data:", response.data); // Debugging log
             setTurfData(response.data.availableSlots); // Store response in state
 
-            sessionStorage.setItem("TurfData", JSON.stringify(response.data.availableSlots))
-        } 
-        catch (error) {
+            sessionStorage.setItem(
+                "TurfData",
+                JSON.stringify(response.data.availableSlots)
+            );
+        } catch (error) {
             console.error("Error fetching data:", error);
         }
     };
@@ -50,7 +50,9 @@ function Search_Available_Turf() {
         // Add your logic here to handle slot selection (e.g., redirect to booking page)
         toast.success(`Selected Turf ID: ${turfId}, Slot ID: ${sloteId}`);
 
-        navigate(`/user/search-available-turf/selected-available-slote/${sloteId}/turfid/${turfId}`);
+        navigate(
+            `/user/search-available-turf/selected-available-slote/${sloteId}/turfid/${turfId}`
+        );
     };
 
     return (
@@ -117,18 +119,32 @@ function Search_Available_Turf() {
                         <tbody>
                             {turfData.map((turf, index) => (
                                 <tr key={turf.slote_id} className="text-center">
-                                    <td className="border p-2">{turf.turf_name}</td>
+                                    <td className="border p-2">
+                                        {turf.turf_name}
+                                    </td>
                                     <td className="border p-2">{turf.city}</td>
                                     <td className="border p-2">{turf.area}</td>
-                                    <td className="border p-2">{turf.pincode}</td>
+                                    <td className="border p-2">
+                                        {turf.pincode}
+                                    </td>
                                     <td className="border p-2">{turf.light}</td>
-                                    <td className="border p-2">{turf.price_hr}</td>
-                                    <td className="border p-2">{turf.start_time}</td>
-                                    <td className="border p-2">{turf.end_time}</td>
+                                    <td className="border p-2">
+                                        {turf.price_hr}
+                                    </td>
+                                    <td className="border p-2">
+                                        {turf.start_time}
+                                    </td>
+                                    <td className="border p-2">
+                                        {turf.end_time}
+                                    </td>
                                     <td className="border p-2">
                                         <button
                                             onClick={() =>
-                                                handleSelectSlot(turf.TURF_Id, turf.slote_id, index)
+                                                handleSelectSlot(
+                                                    turf.TURF_Id,
+                                                    turf.slote_id,
+                                                    index
+                                                )
                                             }
                                             className="bg-green-500 text-white px-4 py-2 rounded-md"
                                         >
@@ -146,5 +162,3 @@ function Search_Available_Turf() {
 }
 
 export default Search_Available_Turf;
-
-

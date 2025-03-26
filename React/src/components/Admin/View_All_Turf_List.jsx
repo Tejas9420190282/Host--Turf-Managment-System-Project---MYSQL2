@@ -12,7 +12,9 @@ function ViewAllTurfList() {
     useEffect(() => {
         const fetchTurfs = async () => {
             try {
-                const response = await axios.get("http://localhost:4545/admin/view-all-turf");
+                const response = await axios.get(
+                    "https://host-turf-managment-system-project.onrender.com/admin/view-all-turf"
+                );
                 if (response.data.success) {
                     setTurfs(response.data.turfList); // Set turf data
                 } else {
@@ -47,7 +49,9 @@ function ViewAllTurfList() {
     // Display turf data in a table
     return (
         <div className="min-h-screen p-8 bg-gray-100">
-            <h1 className="text-2xl font-bold text-center mb-8">All Turf List</h1>
+            <h1 className="text-2xl font-bold text-center mb-8">
+                All Turf List
+            </h1>
             <div className="overflow-x-auto bg-white rounded-lg shadow-lg">
                 <table className="min-w-full bg-white">
                     <thead className="bg-gray-200">
@@ -67,16 +71,36 @@ function ViewAllTurfList() {
                     <tbody>
                         {turfs.map((turf) => (
                             <tr key={turf.TURF_Id} className="hover:bg-gray-50">
-                                <td className="py-3 px-4 border-b text-center">{turf.TURF_Id}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.turf_name}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.area}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.city}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.pincode}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.light}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.price_hr}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.equipment}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.openingTime}</td>
-                                <td className="py-3 px-4 border-b text-center">{turf.closingTime}</td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.TURF_Id}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.turf_name}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.area}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.city}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.pincode}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.light}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.price_hr}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.equipment}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.openingTime}
+                                </td>
+                                <td className="py-3 px-4 border-b text-center">
+                                    {turf.closingTime}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

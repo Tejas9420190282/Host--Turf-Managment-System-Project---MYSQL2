@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function SignUp() {
     const [name, setName] = useState("");
@@ -15,28 +15,32 @@ function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4545/signup-submit", {
-                name,
-                email,
-                password,
-                phone
-            }, {
-                headers: { "Content-Type": "application/json" }
-            });
+            const response = await axios.post(
+                "https://host-turf-managment-system-project.onrender.com/signup-submit",
+                {
+                    name,
+                    email,
+                    password,
+                    phone,
+                },
+                {
+                    headers: { "Content-Type": "application/json" },
+                }
+            );
 
             if (response.data.success) {
                 setMessage("Account created successfully!");
                 toast.success("Account Created Successfully");
                 navigate("/");
-                
             } else {
                 setMessage(response.data.message || "Something went wrong.");
 
                 toast.error(`${message}`);
             }
-        }
-        catch (error) {
-            setMessage(error.response?.data?.message || "Something went wrong.");
+        } catch (error) {
+            setMessage(
+                error.response?.data?.message || "Something went wrong."
+            );
 
             toast.error("Something went wrong.");
 
@@ -47,9 +51,13 @@ function SignUp() {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
+                <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+                    Create an Account
+                </h2>
 
-                {message && <p className="text-red-500 text-center">{message}</p>}
+                {message && (
+                    <p className="text-red-500 text-center">{message}</p>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <input
