@@ -24,15 +24,21 @@ const { reset_Password_Router } = require("./Router/reset_Password_Router");
 const { get_Reset_Password_Page_Router } = require("./Router/get_Reset_Password_Page_Router");
 const { view_Booking_Using_TurfId_Router } = require("./Router/Admin/View_Booking_Using_TufId_Router");
 
-
-
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173", credential: true }));
+// Updated CORS configuration
+const allowedOrigins = [
+  'https://turf-finder-project.netlify.app',
+  'http://localhost:5173' // Keep localhost for development
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true // Corrected this line
+}));
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-
 
 app.use(signUp_Router);
 app.use(login_Router);
@@ -56,14 +62,12 @@ app.use(verifyPaymentRouter);
 app.use(generate_PDF_Router);
 app.use(View_Booking_Using_Player_Id_Router);
 
-
 const PORT = 4545;
 
 mySqlConnectionPool
     .query("SELECT 1")
     .then(() => {
         console.log("turfProject Database connected Successfully".bgGreen);
-
         app.listen(PORT, () => {
             console.log(`Server running on http://localhost:${PORT}`.bgMagenta);
         });
@@ -71,5 +75,4 @@ mySqlConnectionPool
     .catch((error) => {
         console.log(error);
     });
-
 
