@@ -39,15 +39,8 @@ const AdminDashboard = () => {
 
         {/* Cards Section */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          <Card title="Total Turfs" value="150" />
-          <Card title="Active Bookings" value="42" />
-          <Card title="Revenue" value="$12,340" />
-          <Card title="Upcoming Bookings">
-            <ul className="mt-2 space-y-2">
-              <li className="text-sm">Turf A - Tomorrow 4PM</li>
-              <li className="text-sm">Turf B - Tomorrow 6PM</li>
-            </ul>
-          </Card>
+          <Card title="Total Turfs" value="1500" />
+          <Card title="Active Bookings" value="920" />
         </section>
       </main>
     </div>
