@@ -1,4 +1,7 @@
 
+
+// get_Reset_Password_Page_Router.js (Node)
+/* 
 const express = require('express');
 const { getResetPasswordPage } = require('../Controler/get_Reset_Password_Controller');
 
@@ -8,3 +11,4 @@ get_Reset_Password_Page_Router.get("/reset-password/:token", getResetPasswordPag
 
 exports.get_Reset_Password_Page_Router = get_Reset_Password_Page_Router;
 
+ */
