@@ -3,12 +3,16 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+
 
 function User_Dashboard() {
     const user = sessionStorage.getItem("Username");
 
     return (
+        
         <div className="min-h-screen bg-gray-100 p-6">
+            <Navbar />
             <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
                     Welcome, {user}
