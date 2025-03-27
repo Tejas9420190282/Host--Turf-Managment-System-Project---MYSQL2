@@ -20,21 +20,21 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             <a 
-              href="/user-home" 
+              href="https://turf-finder-project.netlify.app/user" 
               className="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition duration-300"
             >
               <FaHome className="mr-2" />
               User Home
             </a>
             <a 
-              href="/search-turf" 
+              href="https://turf-finder-project.netlify.app/user/search-available-turf" 
               className="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition duration-300"
             >
               <FaSearch className="mr-2" />
               Search Available Turf
             </a>
             <a 
-              href="/cancel-booking" 
+              href="https://turf-finder-project.netlify.app/user/cancel-booking" 
               className="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition duration-300"
             >
               <FaTimes className="mr-2" />
@@ -45,7 +45,7 @@ const Navbar = () => {
           {/* User Profile (Desktop) */}
           <div className="hidden md:block">
             <a 
-              href="/profile" 
+              href="https://turf-finder-project.netlify.app/user/profile" 
               className="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition duration-300"
             >
               <FaUser className="mr-2" />
