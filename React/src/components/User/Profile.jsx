@@ -10,7 +10,7 @@ function Profile() {
         sessionStorage.removeItem("Username");
         sessionStorage.removeItem("Token");
         toast.success("Logged out successfully!");
-        navigate('/login');
+        navigate('/');
     };
 
     return (
