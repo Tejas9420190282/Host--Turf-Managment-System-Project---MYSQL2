@@ -11,12 +11,7 @@ const AdminNavbar = ({ sidebarOpen, setSidebarOpen }) => {
       {/* Mobile Header */}
       <header className="bg-white shadow md:hidden">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <button 
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-1 rounded-md text-gray-700"
-          >
-            <BiMenu className="text-2xl" />
-          </button>
+          
           <h1 className="text-xl font-semibold text-gray-800">Admin Panel</h1>
           <div className="w-8"></div> {/* Spacer for alignment */}
         </div>
