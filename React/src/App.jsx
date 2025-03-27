@@ -24,6 +24,7 @@ import ForgotPassword from "./components/Forget_Password";
 import ResetPassword from "./components/Reset_Password";
 import View_Booking from "./components/Admin/View_Booking";
 import Profile from "./components/User/Profile";
+import Cancel_Booking from "./components/User/Cancel_Booking";
 
 function App() {
     const isAuthenticated = useAuth(); // Check if the user is authenticated
@@ -107,6 +108,10 @@ function App() {
                 {
                     path: "/user/view-booking",
                     element: <View_Player_Data />,
+                },
+                {
+                    path: "/user/cancel-booking",
+                    element: <Cancel_Booking />,
                 },
             ],
         },
