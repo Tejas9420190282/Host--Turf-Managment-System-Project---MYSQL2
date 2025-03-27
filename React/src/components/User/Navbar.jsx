@@ -74,28 +74,28 @@ const Navbar = () => {
         <div className="md:hidden bg-green-700">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
-              href="/user-home"
+              href="https://turf-finder-project.netlify.app/user"
               className="flex items-center px-3 py-2 rounded-md text-white hover:bg-green-600"
             >
               <FaHome className="mr-2" />
               User Home
             </a>
             <a
-              href="user/search-turf"
+              href="https://turf-finder-project.netlify.app/user/search-available-turf"
               className="flex items-center px-3 py-2 rounded-md text-white hover:bg-green-600"
             >
               <FaSearch className="mr-2" />
               Search Available Turf
             </a>
             <a
-              href="user/cancel-booking"
+              href="https://turf-finder-project.netlify.app/user/cancel-booking"
               className="flex items-center px-3 py-2 rounded-md text-white hover:bg-green-600"
             >
               <FaTimes className="mr-2" />
               Cancel Booked Turf
             </a>
             <a
-              href="user/profile"
+              href="https://turf-finder-project.netlify.app/user/profile"
               className="flex items-center px-3 py-2 rounded-md text-white hover:bg-green-600"
             >
               <FaUser className="mr-2" />
