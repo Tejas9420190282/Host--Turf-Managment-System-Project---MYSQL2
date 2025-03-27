@@ -16,7 +16,7 @@ function Turf_Result() {
                     <p className="text-gray-700 text-lg mb-6">Turf Created Successfully</p>
                     <p className="text-gray-500">Thank you for adding a new turf. You can now manage it from your dashboard.</p>
                     <button
-                        onClick={() => window.location.href = '/admin-dashboard'} // Redirect to Admin Dashboard
+                        onClick={() => window.location.href = '/admin'} // Redirect to Admin Dashboard
                         className="mt-6 w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200"
                     >
                         Go to Dashboard
