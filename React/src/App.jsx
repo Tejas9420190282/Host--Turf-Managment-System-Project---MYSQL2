@@ -23,6 +23,7 @@ import useAuth from "./components/Protected Route/useAuth";
 import ForgotPassword from "./components/Forget_Password";
 import ResetPassword from "./components/Reset_Password";
 import View_Booking from "./components/Admin/View_Booking";
+import Profile from "./components/User/Profile";
 
 function App() {
     const isAuthenticated = useAuth(); // Check if the user is authenticated
@@ -86,6 +87,10 @@ function App() {
                 {
                     path: "/user",
                     element: <User_Dashboard />,
+                },
+                {
+                    path: "/user/profile",
+                    element: <Profile />,
                 },
                 {
                     path: "/user/search-available-turf",
