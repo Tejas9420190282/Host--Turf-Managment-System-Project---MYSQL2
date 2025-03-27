@@ -1,6 +1,5 @@
 
 
-
 // App.jsx (React)
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";

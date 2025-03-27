@@ -81,21 +81,21 @@ const Navbar = () => {
               User Home
             </a>
             <a
-              href="/search-turf"
+              href="user/search-turf"
               className="flex items-center px-3 py-2 rounded-md text-white hover:bg-green-600"
             >
               <FaSearch className="mr-2" />
               Search Available Turf
             </a>
             <a
-              href="/cancel-booking"
+              href="user/cancel-booking"
               className="flex items-center px-3 py-2 rounded-md text-white hover:bg-green-600"
             >
               <FaTimes className="mr-2" />
               Cancel Booked Turf
             </a>
             <a
-              href="/profile"
+              href="user/profile"
               className="flex items-center px-3 py-2 rounded-md text-white hover:bg-green-600"
             >
               <FaUser className="mr-2" />
