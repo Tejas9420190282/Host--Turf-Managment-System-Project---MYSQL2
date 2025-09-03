@@ -1,134 +1,227 @@
-Turf Management System 🏏⚽
-A full-stack Turf Management System built using React.js, TailwindCSS, Node.js, Express.js, and MySQL. The system helps admins manage turf bookings, while users can search, book, and pay for turfs online.
+🏏⚽ Turf Management System
+A modern, full-stack web application for managing turf bookings online. This system provides a seamless experience for users to discover, book, and manage turf reservations, while giving administrators powerful tools to manage facilities and bookings.
 
-✨ Features
-🔑 User
-Create an account & login securely
 
-Search turfs by city, area, and date
+✨ Key Features
+👤 User Features
+🔐 Secure authentication with JWT and email verification
 
-Book slots & make payments (Razorpay integration)
+🔍 Advanced search by location, date, and availability
 
-Download PDF entry pass
+💳 Integrated payment processing with Razorpay
 
-Reset password via email link
+📄 PDF entry pass generation and download
 
-🛠️ Admin
-Create, update, and delete turfs
+🔄 Password reset via email
 
-View all bookings
+📱 Responsive design for all devices
 
-Filter bookings by turf
+⚙️ Admin Features
+🎯 Complete turf management (CRUD operations)
 
-🧑‍💻 Tech Stack
-Frontend: React.js, TailwindCSS
+📊 Booking overview with filtering capabilities
 
-Backend: Node.js, Express.js
+👥 User management system
 
-Database: MySQL
+📈 Booking analytics and insights
 
-Payment Gateway: Razorpay
+🛠 Technology Stack
+Layer	Technology
+Frontend	React.js, TailwindCSS, Vite
+Backend	Node.js, Express.js, JWT
+Database	MySQL
+Payment	Razorpay Integration
+Authentication	JWT with email verification
+Email Service	Nodemailer
 
-Authentication: JWT + Email verification
+🚀 Quick Start
+Prerequisites
+Node.js 
 
-🚀 Installation & Setup
-1️⃣ Clone the repo
+MySQL
+
+npm or yarn
+
+Installation
+Clone the repository
+
 bash
 git clone https://github.com/Tejas9420190282/Host--Turf-Managment-System-Project---MYSQL2.git
 cd Host--Turf-Managment-System-Project---MYSQL2
-2️⃣ Setup Backend
+Set up the Backend
+
 bash
 cd server
 npm install
-Create a .env file in server/ with:
+Create a .env file in the server directory:
 
-text
+env
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=yourpassword
+DB_PASSWORD=your_mysql_password
 DB_NAME=turf_management
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=your_jwt_secret_here
 RAZORPAY_KEY=your_razorpay_key
 RAZORPAY_SECRET=your_razorpay_secret
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_app_password
 CLIENT_URL=http://localhost:3000
-
-
-Run backend:
+PORT=5000
+Set up the Frontend
 
 bash
-npm start
-3️⃣ Setup Frontend
-bash
-cd client
+cd ../client
 npm install
-Create a .env file in client/ with:
+Create a .env file in the client directory:
 
-text
+env
 VITE_API_BASE_URL=http://localhost:5000
-Run frontend:
+Database Setup
+
+Import the database.sql file into your MySQL database
+
+Update the .env file with your database credentials
+
+Run the Application
 
 bash
+# Start the backend (from server directory)
+npm start
+
+# Start the frontend (from client directory, in a new terminal)
 npm run dev
-🗄️ Database Setup
-Import database.sql file into MySQL (located in the project root)
+The application will be available at:
 
-Update .env with your MySQL credentials
+Frontend: http://localhost:3000
 
-🌐 Deployment
-Frontend Deployment (Netlify)
-Build the React app:
+Backend API: http://localhost:5000
 
-bash
-cd client
-npm run build
-Deploy the dist folder to:
+📁 Project Structure
+text
+Host--Turf-Managment-System-Project---MYSQL2/
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/         # Application pages
+│   │   ├── utils/         # Utility functions
+│   │   └── styles/        # TailwindCSS styles
+│   └── package.json
+├── server/                 # Express backend
+│   ├── controllers/        # Route controllers
+│   ├── models/            # Database models
+│   ├── routes/            # API routes
+│   ├── middleware/        # Custom middleware
+│   └── package.json
+├── database.sql           # Database schema and seed data
+└── README.md
 
-Netlify: Drag and drop the dist folder or connect your GitHub repo
+🌐 Deployment Guide
+Frontend Deployment (Vercel)
+Build the project: npm run build
+
+Connect your GitHub repository to Vercel
+
+Configure environment variables in Vercel dashboard
+
+Deploy automatically from main branch
 
 Backend Deployment (Render)
-Prepare your backend for production:
+Prepare your production environment variables
 
-Update CORS settings to allow your frontend domain
+Connect your repository to Railway/Render
 
-Update database connection to use production database
+Set up the build command: npm install
 
-Set environment variables in your hosting platform
+Set the start command: npm start
 
-Deploy to:
+Configure the database connection string
 
-Render: Connect your GitHub repo and set environment variables
+Database Deployment (TiDB)
+Create a production MySQL database
 
-MySQL Database Deployment
-TiDB: For MySQL-compatible serverless database
+Update connection strings in your backend environment variables
 
+Run the database.sql script on your production database
 
 Environment Variables for Production
-Update your production environment variables with:
+env
+# Backend .env
+DB_HOST=your_production_db_host
+DB_USER=your_production_db_user
+DB_PASSWORD=your_production_db_password
+DB_NAME=your_production_db_name
+JWT_SECRET=your_production_jwt_secret
+RAZORPAY_KEY=your_production_razorpay_key
+RAZORPAY_SECRET=your_production_razorpay_secret
+CLIENT_URL=your_production_frontend_url
+NODE_ENV=production
 
-Production database URL
+🔧 API Endpoints
+Method	Endpoint	Description
+POST	/api/auth/register	User registration
+POST	/api/auth/login	User login
+GET	/api/turfs	Get all turfs
+POST	/api/bookings	Create a new booking
+GET	/api/bookings/:id	Get booking details
+POST	/api/payment/verify	Verify payment
 
-Production frontend URL
+🤝 Contributing
+Fork the project
 
-Razorpay production keys
+Create your feature branch (git checkout -b feature/AmazingFeature)
 
-JWT secret for production
+Commit your changes (git commit -m 'Add some AmazingFeature')
 
-🔮 Future Improvements
-Add mobile app version (React Native)
+Push to the branch (git push origin feature/AmazingFeature)
 
-Real-time booking updates using WebSockets
+Open a Pull Request
 
-Advanced analytics for admins
+🔮 Future Enhancements
+
+📱 Mobile application with React Native
+
+🔔 Real-time notifications using WebSockets
+
+📊 Advanced analytics dashboard for admins
+
+⭐ User rating and review system
+
+🎯 Personalized recommendations
+
+📅 Recurring booking options
+
+🗺️ Interactive map integration
+
+🐛 Troubleshooting
+Common issues and solutions:
+
+Connection refused error: Ensure MySQL is running and credentials are correct
+
+JWT token errors: Verify your JWT secret in environment variables
+
+Razorpay payment failures: Check your Razorpay keys and webhook configurations
+
+Email not sending: Verify email credentials and app passwords
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 👨‍💻 Author
 Tejas Shimpi
 
 MSc CS (2024) | Full Stack Developer
 
-Portfolio: https://tejas-shimpi-portfolio.netlify.app/
+📧 Email: tejasshimpi877@gmail.com
 
-LinkedIn: https://www.linkedin.com/in/tejas-shimpi-459235206
+🌐 Portfolio: https://tejas-shimpi-portfolio.netlify.app/
 
-Email: tejasshimpi877@gmail.com
+💼 LinkedIn: https://www.linkedin.com/in/tejas-shimpi-459235206
+
+🙏 Acknowledgments
+Razorpay for payment integration
+
+TailwindCSS for styling framework
+
+React community for excellent documentation and support
+
+⭐ Star this repo if you found it helpful!
